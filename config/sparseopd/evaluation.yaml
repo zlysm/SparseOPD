@@ -1,0 +1,41 @@
+experiment_prefix: qwen3_1.7b_from_qwen3_4b_instruct_2507
+output_dir: eval
+checkpoint_root: output/{experiment}/ckpt/{prefix}_{experiment}
+data:
+  aime24: dataset/eval/aime_2024.parquet
+  aime25: dataset/eval/aime_2025.parquet
+  hmmt25: dataset/eval/hmmt_feb_2025.parquet
+generation:
+  temperature: 1.0
+  top_p: 1.0
+  max_tokens: 8192
+  samples_for_pass_at_k: 256
+  samples_for_avg_at_8: 8
+  seed: 42
+  max_model_len: 9217
+  dtype: bfloat16
+  gpu_memory_utilization: 0.90
+scoring:
+  workers: 16
+experiments:
+  qwen3-1.7b:
+    model_path: path/to/Qwen3-1.7B
+  qwen3-4b-ins:
+    model_path: path/to/Qwen3-4B-Instruct-2507
+  dense_opd: {}
+  rand1tok: {}
+  mintok: {}
+  maxtok: {}
+  minmaxtok: {}
+  randmask_0p1pct: {}
+  pctltail_0p05pct: {}
+  # at_lt_m1: {}
+  # at_lt_m2: {}
+  # at_lt_m4: {}
+  # at_lt_m8: {}
+  # at_lt_m16: {}
+  # at_lt_m32: {}
+  # at_gt_0p5: {}
+  # at_gt_1: {}
+  # at_gt_2: {}
+  # at_gt_3p5: {}
